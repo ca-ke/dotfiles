@@ -1,4 +1,4 @@
-local paths = require('config_paths')
+local paths = require('config.config_paths')
 
 local function generate_wiki_link(opts)
   if opts.id == nil then
