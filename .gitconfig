@@ -1,0 +1,33 @@
+[user]
+  name = Cake
+[push]
+  default = simple
+[alias]
+  uncommit = reset --soft HEAD~1
+  ac =!git add . && git commit -m
+  amend = !git add -A && git commit --amend --reuse-message=HEAD
+  b = branch
+  co = checkout
+  co-pr = !sh -c 'git fetch upstream pull/$1/head:pr/$1 && git checkout pr/$1' -
+  d = diff
+  diff-with = !sh -c 'git diff $(git merge-base $1 HEAD) HEAD' -
+  fp = !sh -c 'git push --force-with-lease $1'
+  l = !git log --graph --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)'
+  h = !git log --graph --all --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)'
+  hub = !git push -u origin $(git symbolic-ref --short HEAD)
+  pl = pull --prune
+  prune-all = "!git remote | xargs git remote prune"
+  r = remote -v
+  s = status
+  t = tag
+  assume = update-index --assume-unchanged
+  unassume = update-index --no-assume-unchanged
+  assumed = "!git ls-files -v | grep ^h | cut -c 3-"
+[diff]
+  algorithm = patience
+[color]
+  ui = auto
+[pull]
+  ff = only
+[url "git@github.com:"]
+  insteadOf = https://github.com/
